@@ -13,7 +13,7 @@ Vue.createApp({
   mounted() {
     setTimeout(() => {
       this.loading = false
-    }, 1500)
+    }, 2000)
   },
   computed: {
     counterIsZero() {
