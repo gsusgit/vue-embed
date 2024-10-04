@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+            rel="stylesheet"
+        />
+        <title>Vue</title>
+    </head>
+    <body>
+        <div id="app">
+            <div v-if="loading" class="loader-container">
+                <div class="loader"></div>
+            </div>
+            <div v-else>
+                <h1>VueJS</h1>
+                <p>{{ message }}</p>
+                <div class="container">
+                    COUNTER: <span class="counter">{{ counter }}</span>
+                </div>
+                <div class="container">
+                    <button @click="add" :disabled="showAlert">Add</button>
+                    <button @click="remove" :disabled="counterIsZero">Reduce</button>
+                </div>
+                <div class="list-container">
+                    <h2>Goals</h2>
+                    <div class="goal-container">
+                        <form @submit.prevent="newGoal">
+                            <input
+                                type="text"
+                                class="goal"
+                                placeholder="Add goal"
+                                v-model="goal"
+                            />
+                            <button
+                                type="submit"
+                                :disabled="goal === ''"
+                            >
+                                +
+                            </button>
+                        </form>
+                </div>
+                <ul v-if="!zeroGoals">
+                    <li v-for="(goal, index) in goals" :key="goal">{{ index + 1 }} - {{ goal }}</li>
+                </ul>
+                <button
+                    v-if="!zeroGoals"
+                    class="reset"
+                    @click="resetGoals"
+                >
+                    Reset
+                </button>
+                </div>
+                <div
+                    v-if="showAlert"
+                    class="alert"
+                >
+                    {{ alertMessage }}
+                </div>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
