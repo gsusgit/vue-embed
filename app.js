@@ -27,7 +27,7 @@ Vue.createApp({
     counter(value) {
       if (value >= 10) {
         this.showAlert = true
-        this.alertMessage = 'Max counter reached, reseting...'
+        this.alertMessage = 'Max counter reached, resetting...'
         setTimeout(() => {
           this.counter = 0
           this.showAlert = false
